@@ -1,33 +1,47 @@
-﻿string title = "Seigneurs des anneaux - Un RPG revisité !";
+﻿using SdA.Games.RPG.Core.Models.UI;
+
+string title = "Seigneurs des anneaux - Un RPG revisité !";
 var subTitle = "Sam Gamgi remplace Frodo"; // prend le type de mon contenu, pour tout jamais !
 
 int ageLimit = 13;
+string[] characters = new string[] { "Aragorn", "Sam", "Gandalf", "Golum" };
 
+
+#region Execute game
 Console.ForegroundColor = ConsoleColor.DarkGreen;
 Console.WriteLine(title.PadLeft(title.Length + 3, '=').PadRight(title.Length + 6, '='));
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine(subTitle);
 Console.ForegroundColor = ConsoleColor.White;
 
-#region Date de naissance
-bool dateValid = false;
-string dateNaissanceSaisie = string.Empty;
+SelectBirthDay();
+ProposeMenuToUser();
+#endregion
 
-while (!dateValid)
+
+#region Class libraries
+#region Birthday
+void SelectBirthDay()
 {
-    System.Console.WriteLine("Date de naissance ?");
-    dateNaissanceSaisie = Console.ReadLine();
+    bool dateValid = false;
+    string dateNaissanceSaisie = string.Empty;
 
-    string format = "Tu as saisi cette date : {0} (format attendu DD/MM/YYYY)";
-    string result = string.Format(format, dateNaissanceSaisie);
+    while (!dateValid)
+    {
+        System.Console.WriteLine("Date de naissance ?");
+        dateNaissanceSaisie = Console.ReadLine();
 
-    //System.Console.WriteLine("Tu as saisi cette date : {0}", ageSaisie);
-    System.Console.WriteLine(result);
+        string format = "Tu as saisi cette date : {0} (format attendu DD/MM/YYYY)";
+        string result = string.Format(format, dateNaissanceSaisie);
 
-    // DateTime dateAPrioriDeNaissance = DateTime.Parse(dateNaissanceSaisie);
-    DateTime dateARecuperer = DateTime.MinValue;
+        //System.Console.WriteLine("Tu as saisi cette date : {0}", ageSaisie);
+        System.Console.WriteLine(result);
 
-    dateValid = TryDetectAgeValid(dateNaissanceSaisie, out dateARecuperer);
+        // DateTime dateAPrioriDeNaissance = DateTime.Parse(dateNaissanceSaisie);
+        DateTime dateARecuperer = DateTime.MinValue;
+
+        dateValid = TryDetectAgeValid(dateNaissanceSaisie, out dateARecuperer);
+    }
 }
 
 
@@ -59,4 +73,88 @@ bool TryDetectAgeValid(string saisieDate, out DateTime dateARetourner)
 }
 #endregion
 
+#region Around menu
+void DisplayMenu()
+{
+    var listItems = Enum.GetNames<MenuType>();
+
+    foreach (var item in listItems) // foreach fonctionne sur tout ce qui est enumerable (table, list, array, ...)
+    {
+        var currentValue = Enum.Parse<MenuType>(item); // convertit la chaine en valeur de l'enum
+        string displayItem = $"{(int)currentValue}. {item}";
+
+        Console.WriteLine(displayItem);
+    }
+}
+
+void ProposeMenuToUser()
+{
+    bool quit = false;
+
+    while (!quit)
+    {
+        DisplayMenu();
+
+        bool optionIsValid = false;
+        while (!optionIsValid)
+        {
+            Console.WriteLine("Quel option ? (choisir le chiffre)");
+            string inputValue = Console.ReadLine();
+
+            optionIsValid = Enum.TryParse(typeof(MenuType), inputValue, out object inputToEnum);
+            MenuType menuSelected;
+            if (optionIsValid)
+            {
+                menuSelected = (MenuType)inputToEnum; // passer de object à l'enum du point de vue compilation
+
+                switch (menuSelected)
+                {
+                    case MenuType.New:
+                        {
+                            Console.WriteLine("Prépare toi pour le démarrage du jeu");
+                            ProposeCharacterToUser();
+                        }
+                        break;
+                    case MenuType.Quit:
+                        {
+                            Environment.Exit(0);
+                        }
+                        break;
+                }
+            }
+        }
+    }
+}
+#endregion
+
+#region Around characters
+void DisplayCharacters()
+{
+    //string[] characters = new string[4];
+
+    //characters[0] = "Aragorn";
+    //characters[1] = "Sam";
+    //characters[2] = "Gandalf";
+    //characters[3] = "Golum";
+
+    for (int i = 0; i < characters.Length; i++)
+    {
+        string displayValue = $"{i}. {characters[i]}";
+        Console.WriteLine(displayValue);
+    }
+}
+
+void ProposeCharacterToUser()
+{
+    DisplayCharacters();
+
+    Console.WriteLine("Choisis ton perso (entier) : ");
+    int selectedIndex = int.Parse(Console.ReadLine());
+
+    var selectedCharacter = characters[selectedIndex];
+
+    Console.WriteLine("C'est parti pour jouer avec {0}", selectedCharacter);
+}
+#endregion
+#endregion
 
