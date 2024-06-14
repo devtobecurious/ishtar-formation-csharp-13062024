@@ -5,6 +5,8 @@ var subTitle = "Sam Gamgi remplace Frodo"; // prend le type de mon contenu, pour
 
 int ageLimit = 13;
 string[] characters = new string[] { "Aragorn", "Sam", "Gandalf", "Golum" };
+string[,] map = new string[10, 10];
+// string[,,] map3 = new string[10, 10, 5];
 
 
 #region Execute game
@@ -14,8 +16,11 @@ Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine(subTitle);
 Console.ForegroundColor = ConsoleColor.White;
 
+PrepareMap();
+
 SelectBirthDay();
 ProposeMenuToUser();
+
 #endregion
 
 
@@ -154,6 +159,30 @@ void ProposeCharacterToUser()
     var selectedCharacter = characters[selectedIndex];
 
     Console.WriteLine("C'est parti pour jouer avec {0}", selectedCharacter);
+}
+#endregion
+
+#region Map
+void PrepareMap()
+{
+    for (int i = 0; i < 10; i++) // chaque ligne
+    {
+        for (int j = 0; j < 10; j++) // chaque colonne
+        {
+            map[i, j] = "_"; // une cellule sur 2 dimension
+        }
+    }
+}
+
+void DisplayMap()
+{
+    for (int i = 0; i < 10; i++) // chaquee ligne
+    {
+        for (int j = 0; j < 10; j++) // chaque colonne
+        {
+            Console.WriteLine(map[i, j]);
+        }
+    }
 }
 #endregion
 #endregion
