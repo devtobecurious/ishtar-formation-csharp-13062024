@@ -1,5 +1,7 @@
 ﻿using SdA.Games.RPG.Core.Models.UI;
 
+System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+
 string title = "Seigneurs des anneaux - Un RPG revisité !";
 var subTitle = "Sam Gamgi remplace Frodo"; // prend le type de mon contenu, pour tout jamais !
 
@@ -52,7 +54,7 @@ void SelectBirthDay()
 
 bool TryDetectAgeValid(string saisieDate, out DateTime dateARetourner)
 {
-    bool aReussiLaConversion = DateTime.TryParse(saisieDate, out DateTime dateNaissance);
+    bool aReussiLaConversion = DateTime.TryParse(saisieDate, out DateTime dateNaissance); // le try parse est impacté par la culture (donc la langue) en cours !
     dateARetourner = DateTime.MinValue;
 
     if (!aReussiLaConversion)
@@ -72,6 +74,7 @@ bool TryDetectAgeValid(string saisieDate, out DateTime dateARetourner)
     if (estValid)
     {
         dateARetourner = dateNaissance;
+        Console.WriteLine("j'ai bien reconnu ta date de naissance : {0}", dateNaissance.ToString("dddd dd MMMM yyyy"));
     }
 
     return estValid;
