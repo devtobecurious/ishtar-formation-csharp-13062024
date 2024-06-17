@@ -1,6 +1,7 @@
 ﻿using SdA.Games.RPG.Core.Models.UI;
+using System.Globalization;
 
-System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("fr-FR");
 
 string title = "Seigneurs des anneaux - Un RPG revisité !";
 var subTitle = "Sam Gamgi remplace Frodo"; // prend le type de mon contenu, pour tout jamais !
@@ -9,6 +10,11 @@ int ageLimit = 13;
 string[] characters = new string[] { "Aragorn", "Sam", "Gandalf", "Golum" };
 string[,] map = new string[10, 10];
 // string[,,] map3 = new string[10, 10, 5];
+
+
+decimal forceMax = 11111150.5M;
+Console.WriteLine(forceMax.ToString("C")); // # pas obligatoire, 0 => obligatoire // ici le C laisse dotnet gérer l'affichage selon les règle de la culture en cours
+
 
 
 #region Execute game
@@ -74,7 +80,7 @@ bool TryDetectAgeValid(string saisieDate, out DateTime dateARetourner)
     if (estValid)
     {
         dateARetourner = dateNaissance;
-        Console.WriteLine("j'ai bien reconnu ta date de naissance : {0}", dateNaissance.ToString("dddd dd MMMM yyyy"));
+        Console.WriteLine("j'ai bien reconnu ta date de naissance : {0}", dateNaissance.ToString("dddd dd MMMM yyyy", new CultureInfo("en-US")));
     }
 
     return estValid;
