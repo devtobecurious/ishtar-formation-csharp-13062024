@@ -3,17 +3,13 @@
     /// <summary>
     /// Ce que fait mon panda dans un zoo
     /// </summary>
-    internal class Panda
+    internal class Panda : Animal
     {
-        public string Surname;
-        public DateTime BirthDay;
-
-        /// <summary>
-        /// Fait dormir le panda
-        /// </summary>
-        public void Sleep()
+        public override void Sleep()
         {
-            Console.WriteLine($"{this.Surname}, Je dors");
+            Console.WriteLine("Je pose des feuilles de bamboo");
+            base.Sleep(); // ici c'est le comportement du parent
+            Console.WriteLine("Ah je suis bien !");
         }
     }
 }
