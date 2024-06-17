@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SdA.Games.RPG.Core.Models",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SdA.Games.RPG.PoC", "SdA.Games.RPG.PoC\SdA.Games.RPG.PoC.csproj", "{7D143E96-D44C-4B60-B1D2-5F86F6E09FF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecouverteExceptions", "DecouverteExceptions\DecouverteExceptions.csproj", "{FE6A77A6-0671-409A-BB07-80C43A9045B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{7D143E96-D44C-4B60-B1D2-5F86F6E09FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D143E96-D44C-4B60-B1D2-5F86F6E09FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D143E96-D44C-4B60-B1D2-5F86F6E09FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6A77A6-0671-409A-BB07-80C43A9045B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6A77A6-0671-409A-BB07-80C43A9045B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6A77A6-0671-409A-BB07-80C43A9045B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6A77A6-0671-409A-BB07-80C43A9045B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{8F181469-3647-47D5-9C53-CC59EA829D11} = {4E21D6FA-C833-453B-A572-3129A8861B68}
 		{50717D02-9D61-4330-98E2-70671B0C3E8B} = {0F041E31-BE2A-4C02-867D-124397BF2C9C}
 		{EEF63A69-8E46-4041-B13B-BB1ECE7CB597} = {4E21D6FA-C833-453B-A572-3129A8861B68}
+		{FE6A77A6-0671-409A-BB07-80C43A9045B7} = {0F041E31-BE2A-4C02-867D-124397BF2C9C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {502806BA-8972-423B-9B96-AB26442F2B16}
