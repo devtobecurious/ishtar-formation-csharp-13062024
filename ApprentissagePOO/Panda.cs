@@ -16,6 +16,11 @@
             base.Sleep(); // ici c'est le comportement du parent
             Console.WriteLine("Ah je suis bien !");
         }
+
+        protected override void DefaultBreathe()
+        {
+            base.DefaultBreathe();
+        }
     }
 
     internal class RedPanda : Panda
