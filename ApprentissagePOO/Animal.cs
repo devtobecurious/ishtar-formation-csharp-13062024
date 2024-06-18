@@ -1,6 +1,7 @@
 ﻿namespace ApprentissagePOO
 {
-    internal class Animal
+    // abstract = contrat de classe
+    internal abstract class Animal
     {
         public string Surname;
         public DateTime BirthDay;
@@ -12,6 +13,8 @@
         {
             Console.WriteLine($"{this.Surname}, Je dors");
         }
+
+        public abstract void Miam(string food);
     }
 
 }

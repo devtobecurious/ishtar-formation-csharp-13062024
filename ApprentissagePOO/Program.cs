@@ -24,6 +24,10 @@
 
 // règle 04 : qu'est ce qui est identique, et qui peut etre substitué par une classe parente
 
+// règle 05 : on pense parent avant enfant
+
+// règle 06 : on pense contrat avant class
+
 using ApprentissagePOO;
 
 Animal panda = new Panda();
@@ -49,10 +53,12 @@ var list2 = new List<Animal>()
     panda,
     panda2,
     new Bat(),
+    new RedPanda()
     //new MushRoom() => je ne peux pas, car n'hérite pas de Animal
 };
 
 GoToSleep(list2);
+GoToEat(list2);
 
 void GoToSleep(List<Animal> list)
 {
@@ -62,6 +68,25 @@ void GoToSleep(List<Animal> list)
     }
 }
 
+void GoToEat(List<Animal> list)
+{
+    foreach (var item in list)
+    {
+        item.Miam("repas");
+    }
+}
+
+
+List<IFlying> flyers = new List<IFlying>()
+{
+    new Sparrow(),
+    new Bat()
+};
+
+flyers.ForEach(flyer =>
+{
+    flyer.Fly();
+});
 
 
 List<Panda> list = new List<Panda>() // on crée et initialise avec 3 pandas
