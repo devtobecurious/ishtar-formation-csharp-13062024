@@ -28,6 +28,8 @@
 
 // règle 06 : on pense contrat avant class
 
+// règle 07 : mieux vaut plein de petites interfaces qu'une très grosse
+
 using ApprentissagePOO;
 
 Animal panda = new Panda();
