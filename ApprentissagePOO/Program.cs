@@ -30,6 +30,8 @@
 
 // règle 07 : mieux vaut plein de petites interfaces qu'une très grosse
 
+// règle 08 : ce qui change je le mets dans une interface
+
 using ApprentissagePOO;
 
 Animal panda = new Panda();
